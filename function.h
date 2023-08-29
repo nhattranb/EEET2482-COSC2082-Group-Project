@@ -12,3 +12,7 @@
   Created  date: 22/08/2023
   Acknowledgement: List the resources that you use to complete this assessment (write 'None' if you don't use any).
 */
+
+#ifndef FUNCTION_H
+#define FUNCTION_H
+
