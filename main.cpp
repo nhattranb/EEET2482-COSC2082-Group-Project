@@ -21,9 +21,12 @@
 #include <iomanip>
 #include <vector>
 #include "customer.h"
+#include "motorbike.h"
+#include "function.h"
 using namespace std;
 
 int main() {
+    string user;
     cout << "EEET2482/COSC2082 - Group Project \n";
     cout << "Motorbike Rental Application \n";
     cout << "Lecturer: Dr Ling Huo Chong \n";
@@ -32,5 +35,6 @@ int main() {
                            Tran Tan Phat (s3836612)
                            Nguyen Vo Truong Toan (s3979056)
                            Le Tran Duc Huy (s3891993) \n";
-    cout << "Welcome to the service! Who are you? \n"; 
+    cout << "Welcome to the service! Who are you? \n";
+    cin >> user;
 }

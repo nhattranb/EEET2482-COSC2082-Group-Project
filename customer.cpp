@@ -32,10 +32,17 @@ Customer(string Name, string UserName, string password, int id, int phone, int l
     this->license = license;
 }
 
-virtual string toString() {
-    /* your code here */
-}
+string toString() {}
 
 void showInfo(Customer &cus) {
     cout << cus.toString();
 }
+
+bool login(string UserName, string password) {
+
+}
+
+void addCreditPoints {}
+
+void viewMotorbikeList {}
+

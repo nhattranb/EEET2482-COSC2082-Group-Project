@@ -21,16 +21,27 @@
 #include <iomanip>
 #include <vector>
 #include "motorbike.h"
+#include "function.h"
 using namespace std;
 
 Motorbike () {
 
-}
+};
 
-virtual string toString() {
+string toString() {
+      return "The motorbike has " + "\n";
+      // add your implementation here
+    }
 
-}
+    void getDetails() {
+       cout << toString();
+    }
 
-void showInfo (Motorbike &mb) {
-    cout << mb.toString();
-}
+    bool isAvailable() {
+
+    }
+
+    void setAvailability(bool availability) {
+       
+    }
+

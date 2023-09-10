@@ -18,15 +18,20 @@
 
 #include <iostream>
 #include <string>
+#include "customer.h"
 
 class Motorbike {
     private:
     std::string model;
     std::string color;
-    std::string engine;
+    float engine;
     std::string location;
     int transmission;
-    int year;
+    int yearMade;
+    std::string description;
+
+    Customer() owner;
+    bool available;
 
     public:
     std::string getModel() {
@@ -66,10 +71,18 @@ class Motorbike {
     }
 
     int getYear() {
-    	return this->year;
+    	return this->yearMade;
     }
-    void setYear(int year) {
-    	this->year = year;
+    void setYear(int yearMade) {
+    	this->yearMade = yearMade;
+    }
+
+    std::string getDescription() {
+	    return this->description;
+    }
+
+    void setDescription(std::string description) {
+	    this->description = description;
     }
 
 };

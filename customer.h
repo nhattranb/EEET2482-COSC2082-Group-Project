@@ -18,6 +18,7 @@
 
 #include <iostream>
 #include <string>
+using namespace std;
 
 class Customer {
     private:
@@ -27,9 +28,17 @@ class Customer {
     double id;
     int phone;
     int license;
+    string idType;
+    string ExpiryDate;
+    double creditPoints;
+    double renterRating;
+    double ownerRating;
 
     public:
-    Customer() {};
+    Customer(string Name="", string UserName="", string password="", double id=0, int phone=0, int license=0,
+            string idType="", string ExpiryDate=""): Name(Name), UserName(UserName), password(password), id(id), phone(phone).
+            license(license) {};
+    
     void showInfo();
 
     std::string getName() {
