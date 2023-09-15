@@ -15,11 +15,11 @@
 
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <cstring>
-#include <string>
 #include <iomanip>
 #include <vector>
+#include <string>
+#include <sstream>
 #include "rent.h"
 #include "motorbike.h"
 #include "customer.h"
