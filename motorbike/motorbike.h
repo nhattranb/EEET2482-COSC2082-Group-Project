@@ -29,7 +29,6 @@ class Motorbike {
     int transmission;
     int yearMade;
     std::string description;
-
     Customer() owner;
     bool available;
 
