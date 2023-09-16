@@ -24,24 +24,87 @@
 #include "function.h"
 using namespace std;
 
-Motorbike () {
+Motorbike::Motorbike(std::string model, std::string color, float engine,
+                        std::string location, int transmission, int yearMade, std::string description) {
+    this->model = model;
+    this->color = color;
+    this->engine = engine;
+    this->location = location;
+    this->transmission = 0;
+    this->yearMade = 0;
+    this->description = description;
+    this->owner = nullptr;
+    this->available = false;
+    this->ratingScore = 0;
+    this->startingDate = nullptr;
+    this->endingDate = nullptr;
+}
 
-};
+//Lấy đánh giá trung bình từ members
+double Motorbike::getRatingScore() {
+    if(this->listMotorbikeReview.empty()){ //bổ sung tên list sau
+        return 0;
+    }
+    double tempScore = 0;
+    for(auto & i : listMotorbikeReview){ //bổ sung tên list sau
+        tempScore += i->ratingScore;
+    }
+    double avgScore = (double ) tempScore / (double ) listMotorbikeReview.size(); //bổ sung tên list sau
+    return avgScore;
+}
 
-string toString() {
-      return "The motorbike has " + "\n";
-      // add your implementation here
+void Motorbike::viewMotorbikeInfo() {
+    std::cout << "\nOwner: " << owner->fullName << "\n";
+    std::cout << "Location: " << location << "\n";
+    std::cout << "Description: " << houseDescription << "\n";
+    std::cout << "Rating score: " << this->getRatingScore() << "\n";
+    if(isAdded){
+        std::cout << "Available from: " << this->startingDate->convertDatetoString() << " to " << this->endingDate->convertDatetoString() << "\n";
+        std::cout << "Credit per day: " << consumingPointsPerDay << "\n";
+    }
+}
+
+void Motorbike::viewMotorbikeReview() {
+    if(listMotorbikeReview.empty()){
+        std::cout << "\nThere is no review of this motorbike\n";
+    }
+    else {
+        for(auto &i : viewMotorbikeReview){
+            int tempScore = i->ratingScore;
+            std::string tempComment = i->comment;
+            auto memReview = i->memberReview;
+            std::cout << "\n-----------------------"
+                      << "\n\nReview by member: " << memReview->fullName
+                      << "\n-----------------------"
+                      << "Score: " << tempScore << "\n"
+                      << "Comment: " << tempComment;
+        }
+    }
+}
+
+void Motorbike::addRequestToMotorbikeRequestList(Request *request) {
+    listMotorbikeRequest.push_back(request);
+}
+
+void Motorbike::addReviewToMotorbikeReviewList(Review *review) {
+    listMotorbikeReview.push_back(review);
+}
+
+
+Motorbike :: ~Motorbike() {
+    for(auto &review: viewMotorbikeReview) {
+        delete review;
     }
 
-    void getDetails() {
-       cout << toString();
+    for(auto &request : listMotorbikeRequest) {
+        delete request;
     }
 
-    bool isAvailable() {
-
+    for(auto &rentedMotorbike : listRentedMotorbike) {
+        delete rentedMotorbike;
     }
 
-    void setAvailability(bool availability) {
-       
-    }
+    delete startingDate;
+    delete endingDate;
+}
 
