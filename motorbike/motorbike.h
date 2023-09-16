@@ -31,6 +31,7 @@ class Motorbike {
     std::string description;
     Customer() owner;
     bool available;
+    Rating r;
 
     public:
     std::string getModel() {
@@ -84,6 +85,7 @@ class Motorbike {
 	    this->description = description;
     }
 
+    friend class Rating;
 };
 
 #endif

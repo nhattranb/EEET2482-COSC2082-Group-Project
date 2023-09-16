@@ -32,7 +32,10 @@ Customer(string Name, string UserName, string password, int id, int phone, int l
     this->license = license;
 }
 
-string toString() {}
+string toString() {
+    return "Customer name: " + Name + " with username: " + UserName;
+    return "Password: " + password;
+}
 
 void showInfo(Customer &cus) {
     cout << cus.toString();

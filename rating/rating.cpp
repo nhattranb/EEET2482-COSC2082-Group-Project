@@ -1,4 +1,4 @@
-*
+/*
   RMIT University Vietnam
   Course: EEET2482/COSC2082
   Semester: 2023-2
@@ -20,7 +20,17 @@
 #include <vector>
 #include <string>
 #include <sstream>
-#include "rent.h"
-#include "motorbike.h"
+#include "rating.h"
 #include "customer.h"
+#include "motorbike.h"
 using namespace std;
+
+void rateRenter(Customer &c, Motorbike &m, int score, string comment) {
+    m.score = score;
+    m.comment = comment;
+}
+
+void rateOwner(Customer &c, Motorbike &m, int score, string comment) {
+    m.score = score;
+    m.comment = comment;
+}

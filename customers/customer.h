@@ -28,15 +28,15 @@ class Customer {
     double id;
     int phone;
     int license;
-    string idType;
-    string ExpiryDate;
+    std::string idType;
+    std::string ExpiryDate;
     double creditPoints;
     double renterRating;
     double ownerRating;
 
     public:
-    Customer(string Name="", string UserName="", string password="", double id=0, int phone=0, int license=0,
-            string idType="", string ExpiryDate=""): Name(Name), UserName(UserName), password(password), id(id), phone(phone).
+    Customer(std::string Name="", std::string UserName="", std::string password="", double id=0, int phone=0, int license=0,
+            std::string idType="", std:string ExpiryDate=""): Name(Name), UserName(UserName), password(password), id(id), phone(phone).
             license(license) {};
     
     void showInfo();
