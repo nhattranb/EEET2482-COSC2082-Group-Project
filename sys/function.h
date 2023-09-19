@@ -13,27 +13,27 @@
   Acknowledgement: List the resources that you use to complete this assessment (write 'None' if you don't use any).
 */
 
-#ifndef RENT_H
-#define RENT_H
+#ifndef FUNCTION_H
+#define FUNCTION_H
 
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <vector>
-using namespace std;
+#include "rent.h"
+#include "motorbike.h"
+#include "customer.h"
+#include "rating.h"
 
-class Rent {
-    private:
-    int date;
-    int month;
-    int year;
-    bool requests;
+class Rent;
 
+class Motorbike;
+
+class Customer;
+
+class Rating;
+
+class Sys {
     public:
-    Rent(int date, int month, int year);
+    Sys();
 
-    friend class Customer;
-    friend class Motorbike;
+    void menu();
 };
 
 #endif

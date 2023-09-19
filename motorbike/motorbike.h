@@ -49,10 +49,10 @@ class Motorbike {
     	this->color = color;
     }
 
-    std::string getEngine() {
+    float getEngine() {
     	return this->engine;
     }
-    void setEngine(std::string engine) {
+    void setEngine(float engine) {
     	this->engine = engine;
     }
 

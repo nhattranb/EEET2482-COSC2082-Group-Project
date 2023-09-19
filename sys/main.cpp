@@ -13,8 +13,20 @@
   Acknowledgement: List the resources that you use to complete this assessment (write 'None' if you don't use any).
 */
 
-#ifndef FUNCTION_H
-#define FUNCTION_H
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <cstring>
+#include <string>
+#include <iomanip>
+#include <vector>
+#include "function.h"
+#include "customers/customer.h"
+#include "motorbike/motorbike.h"
+#include "rating/rating.h"
+#include "rent/rent.h"
+using namespace std;
 
-
-#endif
+int main() {
+    Sys system;
+}
