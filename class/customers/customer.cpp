@@ -23,9 +23,9 @@
 #include "customer.h"
 using namespace std;
 
-Customer(string Name, string UserName, string password, int id, int phone, int license) {
-    this->Name = Name;
-    this->UserName = UserName;
+Customer(string name, string username, string password, int id, int phone, int license) {
+    this->name = name;
+    this->username = username;
     this->password = password;
     this->id = id;
     this->phone = phone;
@@ -33,7 +33,7 @@ Customer(string Name, string UserName, string password, int id, int phone, int l
 }
 
 string toString() {
-    return "Customer name: " + Name + " with username: " + UserName;
+    return "Customer name: " + name + " with username: " + username;
     return "Password: " + password;
 }
 
@@ -71,9 +71,3 @@ void registerme() {
     getline(cin, password);
     writetofile(username, password);
 }
-
-
-void addCreditPoints {}
-
-void viewMotorbikeList {}
-

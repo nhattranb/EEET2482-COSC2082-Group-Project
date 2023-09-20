@@ -22,8 +22,8 @@ using namespace std;
 
 class Customer {
     private:
-    std::string Name;
-    std::string UserName;
+    std::string name;
+    std::string username;
     std::string password;
     double id;
     int phone;
@@ -35,25 +35,31 @@ class Customer {
     double ownerRating;
 
     public:
-    Customer(std::string Name="", std::string UserName="", std::string password="", double id=0, int phone=0, int license=0,
-            std::string idType="", std:string ExpiryDate=""): Name(Name), UserName(UserName), password(password), id(id), phone(phone).
+    Customer(std::string name="", std::string username="", std::string password="", double id=0, int phone=0, int license=0,
+            std::string idType="", std:string ExpiryDate=""): Name(name), UserName(username), password(password), id(id), phone(phone).
             license(license) {};
     
     void showInfo();
 
+    void writetofile(std::string username, std::string password);
+
+    bool login(std::string username, std::string password);
+
+    void registerme();
+
     std::string getName() {
-	    return this->Name;
+	    return this->name;
     }
 
-    void setName(std::string Name) {
-	    this->Name = Name;
+    void setName(std::string name) {
+	    this->name = name;
     }
 
     std::string getUserName() {
-    	return this->UserName;
+    	return this->username;
     }
     void setUserName(std::string UserName) {
-    	this->UserName = UserName;
+    	this->username = username;
     }
 
     std::string getPassword() {
@@ -83,6 +89,9 @@ class Customer {
     void setLicense(int license) {
     	this->license = license;
     }
+
+    friend class Motorbike;
+    friend class Rating;
 
 };
 
