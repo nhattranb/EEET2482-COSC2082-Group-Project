@@ -10,7 +10,7 @@
   Le Tran Duc Huy (s3891993)
   Compiler used: g++ 8.1.0
   Created  date: 22/08/2023
-  Acknowledgement: Use a prompt from BingGPT...
+  Acknowledgement: https://cplusplus.com/forum/general/22788/
 */
 
 #include <iostream>
