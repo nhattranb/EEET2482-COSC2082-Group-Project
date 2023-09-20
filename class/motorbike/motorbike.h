@@ -17,75 +17,126 @@
 #define MOTORBIKE_H
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <cstring>
 #include <string>
-#include "customer.h"
+#include <iomanip>
+#include <vector>
+#include "motorbike.h"
+#include "function.h"
+using namespace std;
 
 class Motorbike {
     private:
-    std::string model;
-    std::string color;
-    float engine;
-    std::string location;
-    int transmission;
-    int yearMade;
-    std::string description;
-    Customer() owner;
-    bool available;
-    Rating r;
+        std::string model;
+        std::string color;
+        float engine;
+        std::string location;
+        int transmission;
+        int yearMade;
+        std::string description;
+        Member* owner;
+        bool available;
+        double ratingScore;
+        Date* startingDate;
+        Date* endingDate;
+        std::vector<Review*> listMotorbikeReview;
+        std::vector<Request*> listMotorbikeRequest;
+        std::vector<RentedMotorbike*> listRentedMotorbike;
 
     public:
-    std::string getModel() {
-	    return this->model;
-    }
+        Motorbike(std::string model, std::string color, float engine,
+                                std::string location, int transmission, int yearMade, std::string description) {
+            this->model = model;
+            this->color = color;
+            this->engine = engine;
+            this->location = location;
+            this->transmission = transmission; 
+            this->yearMade = yearMade; 
+            this->description = description;
+            this->owner = nullptr;
+            this->available = false;
+            this->ratingScore = 0;
+            this->startingDate = nullptr;
+            this->endingDate = nullptr;
+        }
 
-    void setModel(std::string model) {
-	    this->model = model;
-    }
+        //Lấy đánh giá trung bình từ members
+        double Motorbike::getRatingScore() {
+            if(this->listMotorbikeReview.empty()){ //bổ sung tên list sau
+                return 0;
+            }
+            double tempScore = 0;
+            for(auto & i : listMotorbikeReview){ //bổ sung tên list sau
+                tempScore += i->ratingScore;
+            }
+            double avgScore = (double ) tempScore / (double ) listMotorbikeReview.size(); //bổ sung tên list sau
+            return avgScore;
+        }
 
-    std::string getColor() {
-    	return this->color;
-    }
-    void setColor(std::string color) {
-    	this->color = color;
-    }
+        void viewMotorbikeInfo() {
+                if (owner != nullptr) {
+                    std::cout << "\nOwner: " << owner->fullName << "\n";
+                }
+                std::cout << "Location: " << location << "\n";
+                std::cout << "Description: " << description << "\n";
+                std::cout << "Rating score: " << getRatingScore() << "\n";
+                if (available) {
+                    std::cout << "Available from: " << startingDate->convertDatetoString()
+                            << " to " << endingDate->convertDatetoString() << "\n";
+                    std::cout << "Credit per day: " << consumingPointsPerDay << "\n";
+                }
+            }
 
-    float getEngine() {
-    	return this->engine;
-    }
-    void setEngine(float engine) {
-    	this->engine = engine;
-    }
+        void viewMotorbikeReview() {
+                if (listMotorbikeReview.empty()) {
+                    std::cout << "\nThere is no review of this motorbike\n";
+                }
+                else {
+                    for (auto& review : listMotorbikeReview) {
+                        int tempScore = review->ratingScore;
+                        std::string tempComment = review->comment;
+                        Member* memReview = review->memberReview;
+                        std::cout << "\n-----------------------"
+                                << "\n\nReview by member: " << memReview->fullName
+                                << "\n-----------------------"
+                                << "Score: " << tempScore << "\n"
+                                << "Comment: " << tempComment;
+                    }
+            }
+        }
 
-    std::string getLocation() {
-    	return this->location;
-    }
-    void setLocation(std::string location) {
-    	this->location = location;
-    }
+        void Motorbike::addRequestToMotorbikeRequestList(Request *request) {
+            listMotorbikeRequest.push_back(request);
+        }
 
-    int getTransmission() {
-    	return this->transmission;
-    }
-    void setTransmission(int transmission) {
-    	this->transmission = transmission;
-    }
+        void Motorbike::addReviewToMotorbikeReviewList(Review *review) {
+            listMotorbikeReview.push_back(review);
+        }
 
-    int getYear() {
-    	return this->yearMade;
-    }
-    void setYear(int yearMade) {
-    	this->yearMade = yearMade;
-    }
 
-    std::string getDescription() {
-	    return this->description;
-    }
+        ~Motorbike() {
+        for (auto& review : listMotorbikeReview) {
+            delete review;
+        }
 
-    void setDescription(std::string description) {
-	    this->description = description;
-    }
+        for (auto& request : listMotorbikeRequest) {
+            delete request;
+        }
 
-    friend class Rating;
+        for (auto& rentedMotorbike : listRentedMotorbike) {
+            delete rentedMotorbike;
+        }
+
+        delete startingDate;
+        delete endingDate;
+
+        // Clear the vectors
+        listMotorbikeReview.clear();
+        listMotorbikeRequest.clear();
+        listRentedMotorbike.clear();
+    }
 };
 
 #endif
