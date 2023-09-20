@@ -16,10 +16,11 @@
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
-#include "rent.h"
-#include "motorbike.h"
-#include "customer.h"
-#include "rating.h"
+#include "class/rent/rent.h"
+#include "class/motorbike/motorbike.h"
+#include "class/customers/customer.h"
+#include "class/rating/rating.h"
+#include "class/admin/admin.h"
 
 class Rent;
 
@@ -28,6 +29,8 @@ class Motorbike;
 class Customer;
 
 class Rating;
+
+class Admin;
 
 class Sys {
     public:
