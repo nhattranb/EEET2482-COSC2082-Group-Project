@@ -29,27 +29,39 @@ private:
     int transmission;
     int yearMade;
     std::string description;
-    Member* owner;
+
+    Customer* owner;
+
     bool available;
     double ratingScore;
     Date* startingDate;
     Date* endingDate;
+
     std::vector<Review*> listMotorbikeReview;
+
     std::vector<Request*> listMotorbikeRequest;
+
     std::vector<RentedMotorbike*> listRentedMotorbike;
 
 public:
     Motorbike(std::string model, std::string color, float engine,
               std::string location, int transmission, int yearMade, std::string description);
 
-    // Declare member functions here.
     double getRatingScore();
+
     void viewMotorbikeInfo();
+
     void viewMotorbikeReview();
+
     void addRequestToMotorbikeRequestList(Request* request);
+
     void addReviewToMotorbikeReviewList(Review* review);
 
     ~Motorbike();
+
+    friend class Member;
+
+    friend class System;
 };
 
 #endif
