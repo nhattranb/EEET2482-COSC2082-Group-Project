@@ -33,7 +33,7 @@ class Motorbike {
         int transmission;
         int yearMade;
         std::string description;
-        Member* owner;
+        Customer* owner;
         bool available;
         double ratingScore;
         Date* startingDate;
