@@ -10,7 +10,7 @@
   Le Tran Duc Huy (s3891993)
   Compiler used: g++ 8.1.0
   Created  date: 22/08/2023
-  Acknowledgement: List the resources that you use to complete this assessment (write 'None' if you don't use any).
+  Acknowledgement: https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program
 */
 
 #include <iostream>
@@ -41,9 +41,37 @@ void showInfo(Customer &cus) {
     cout << cus.toString();
 }
 
-bool login(string UserName, string password) {
-
+void writetofile(string username, string password) {
+    ofstream writefile;
+    string file = username + ".txt";
+    writefile.open(file.c_str());
+    writefile << password;
+    writefile.close();
 }
+
+bool login(string username, string password) {
+    ifstream readfile;
+    string file = username + ".txt";
+    readfile.open(file.c_str());
+    if (readfile.is_open()) {
+        string stored_password;
+        getline(readfile, stored_password);
+        readfile.close();
+        return stored_password == password;
+    }
+    return false;
+}
+
+void registerme() {
+    cout << "Please enter your username: ";
+    string username;
+    getline(cin, username);
+    cout << "Please enter your password: ";
+    string password;
+    getline(cin, password);
+    writetofile(username, password);
+}
+
 
 void addCreditPoints {}
 
