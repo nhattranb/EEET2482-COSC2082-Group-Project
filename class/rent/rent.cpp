@@ -15,8 +15,9 @@
 
 #include <iostream>
 #include <vector>
-#include "motorbike.h"
-#include "customer.h"
+#include "../motorbike/motorbike.h"
+#include "../customers/customer.h"
+#include <algorithm>
 using namespace std;
 
 void requestToRent(Motorbike &motorbike, Customer &member) {

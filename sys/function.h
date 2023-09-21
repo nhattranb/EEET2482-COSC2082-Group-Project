@@ -25,11 +25,11 @@
 #include <regex>
 #include <fstream>
 #include <iomanip>
-#include "class/rent/rent.h"
-#include "class/motorbike/motorbike.h"
-#include "class/customers/customer.h"
-#include "class/rating/rating.h"
-#include "class/admin/admin.h"
+#include "../class/rent/rent.h"
+#include "../class/motorbike/motorbike.h"
+#include "../class/customers/customer.h"
+#include "../class/rating/rating.h"
+#include "../class/admin/admin.h"
 
 class Rent;
 

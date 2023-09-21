@@ -21,8 +21,8 @@
 #include <string>
 #include <sstream>
 #include "rating.h"
-#include "customer.h"
-#include "motorbike.h"
+#include "../customers/customer.h"
+#include "../motorbike/motorbike.h"
 using namespace std;
 
 void rateRenter(Customer &c, Motorbike &m, int ratingScore, string comment) {

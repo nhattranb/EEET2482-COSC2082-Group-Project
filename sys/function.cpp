@@ -1,8 +1,8 @@
-#include "class/customers/customer.h"
-#include "class/motorbike/motorbike.h"
-#include "class/rating/rating.h"
-#include "class/rent/rent.h"
-#include "class/admin/admin.h"
+#include "../class/customers/customer.h"
+#include "../class/motorbike/motorbike.h"
+#include "../class/rating/rating.h"
+#include "../class/rent/rent.h"
+#include "../class/admin/admin.h"
 #include "function.h"
 #include <bits/stdc++.h>
 
@@ -40,7 +40,7 @@ void System::inputAdmintoSys() {
     vector<string> dataLst = splitStr(dataLine, ';');
     string username = dataLst[0];
     string pass = dataLst[1];
-    admin = new Admin(username, pass);
+    admin = new Admin(username, password);
 }
 
 void System::inputMemberToSys() {
