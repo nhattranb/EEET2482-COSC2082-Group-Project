@@ -16,6 +16,7 @@
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
+#define ADMIN_FILE "class/data/admin.txt"
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -38,9 +39,9 @@ class Rating;
 
 class Admin;
 
-class Sys {
+class System {
     public:
-    Sys();
+    System();
 
     void menu();
 

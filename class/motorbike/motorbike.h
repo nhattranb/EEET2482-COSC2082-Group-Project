@@ -34,6 +34,7 @@ private:
 
     bool available;
     double ratingScore;
+
     Date* startingDate;
     Date* endingDate;
 

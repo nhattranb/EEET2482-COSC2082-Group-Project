@@ -4,10 +4,11 @@
 #include "class/rent/rent.h"
 #include "class/admin/admin.h"
 #include "function.h"
+#include <bits/stdc++.h>
 
-Sys::Sys() {}
+System::System() {}
 
-void Sys::menu() {
+void System::menu() {
     int user;
     cout << "EEET2482/COSC2082 - Group Project \n";
     cout << "Motorbike Rental Application \n";
@@ -28,7 +29,7 @@ void Sys::menu() {
     }
 }
 
-void Sys::inputAdmintoSys() {
+void System::inputAdmintoSys() {
     string dataLine;
     ifstream readFile{ADMIN_FILE};
     if (!readFile.is_open()) {

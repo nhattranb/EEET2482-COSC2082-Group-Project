@@ -29,8 +29,8 @@
 using namespace std;
 
 int main() {
-    Sys system;
-    system.menu();
-    system.inputAdmintoSys();
+    System sys;
+    sys.menu();
+    sys.inputAdmintoSys();
     return 0;
 }

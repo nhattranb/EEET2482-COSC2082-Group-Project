@@ -25,12 +25,12 @@
 #include "motorbike.h"
 using namespace std;
 
-void rateRenter(Customer &c, Motorbike &m, int score, string comment) {
-    m.score = score;
+void rateRenter(Customer &c, Motorbike &m, int ratingScore, string comment) {
+    m.ratingScore = ratingScore;
     m.comment = comment;
 }
 
 void rateOwner(Customer &c, Motorbike &m, int score, string comment) {
-    m.score = score;
+    m.ratingScore = ratingScore;
     m.comment = comment;
 }

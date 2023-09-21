@@ -41,6 +41,12 @@ class Rating {
         cout << toString();
     }
 
+    void rateRenter(Customer &c, Motorbike &m, int ratingScore, string comment);
+
+    void rateOwner(Customer &c, Motorbike &m, int score, string comment);
+
     friend class Customer;
     friend class Motorbike;
 };
+
+#endif
