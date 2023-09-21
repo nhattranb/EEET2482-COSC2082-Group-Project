@@ -29,7 +29,7 @@ class Admin {
     int phone;
   
     public:
-    Admin(std::string name="", std::string username="", std::string password="",int phone=0 ): Name(name), UserName(username), password(password),phone(phone);
+    Admin(std::string name="", std::string username="", std::string password="",int phone=0 ): name(name), username(username), password(password),phone(phone) {};
     
     void showInfo();
 

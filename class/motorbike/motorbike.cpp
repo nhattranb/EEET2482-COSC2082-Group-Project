@@ -17,6 +17,7 @@
 #include <vector>
 #include "../sys/function.h"
 #include "../motorbike/motorbike.h"
+#include "../rating/rating.h"
 
 class Motorbike {
 private:
@@ -32,8 +33,8 @@ private:
     double ratingScore;
     Date* startingDate;
     Date* endingDate;
-    std::vector<Review*> listMotorbikeReview;
-    std::vector<Request*> listMotorbikeRequest;
+    std::vector<Rating*> listMotorbikeReview;
+    std::vector<Rent*> listMotorbikeRequest;
     std::vector<RentedMotorbike*> listRentedMotorbike;
 
 public:
@@ -46,9 +47,9 @@ public:
 
     void viewMotorbikeReview();
 
-    void addRequestToMotorbikeRequestList(Request* request);
+    void addRequestToMotorbikeRequestList(Rent* request);
 
-    void addReviewToMotorbikeReviewList(Review* review);
+    void addReviewToMotorbikeReviewList(Rating* review);
 
     ~Motorbike();
 };
@@ -86,12 +87,12 @@ double Motorbike::getRatingScore() {
 // Function to display motorbike information
 void Motorbike::viewMotorbikeInfo() {
     if (owner != nullptr) {
-        std::cout << "\nOwner: " << owner->fullName << "\n";
+        std::cout << "\nOwner: " << owner->name << "\n";
     }
     std::cout << "Location: " << location << "\n";
     std::cout << "Description: " << description << "\n";
     std::cout << "Rating score: " << getRatingScore() << "\n";
-    if (available) {
+    while (available != false) {
         std::cout << "Available from: " << startingDate->convertDatetoString()
                   << " to " << endingDate->convertDatetoString() << "\n";
         // Assuming 'consumingPointsPerDay' is a member variable or a defined constant
@@ -107,9 +108,9 @@ void Motorbike::viewMotorbikeReview() {
         for (auto& review : listMotorbikeReview) {
             int tempScore = review->ratingScore;
             std::string tempComment = review->comment;
-            Member* memReview = review->memberReview;
+            Customer* memReview = review->memberReview;
             std::cout << "\n-----------------------"
-                      << "\n\nReview by member: " << memReview->fullName
+                      << "\n\nReview by member: " << memReview->name
                       << "\n-----------------------"
                       << "Score: " << tempScore << "\n"
                       << "Comment: " << tempComment;
@@ -118,12 +119,12 @@ void Motorbike::viewMotorbikeReview() {
 }
 
 // Function to add a request to the motorbike's request list
-void Motorbike::addRequestToMotorbikeRequestList(Request* request) {
+void Motorbike::addRequestToMotorbikeRequestList(Rent* request) {
     listMotorbikeRequest.push_back(request);
 }
 
 // Function to add a review to the motorbike's review list
-void Motorbike::addReviewToMotorbikeReviewList(Review* review) {
+void Motorbike::addReviewToMotorbikeReviewList(Rating* review) {
     listMotorbikeReview.push_back(review);
 }
 

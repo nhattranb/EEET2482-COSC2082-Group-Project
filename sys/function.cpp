@@ -58,4 +58,3 @@ void System::inputMemberToSys() {
     readFile.close();
 }
 
-

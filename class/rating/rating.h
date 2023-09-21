@@ -26,12 +26,12 @@ using namespace std;
 class Rating {
     private:
     int score;
-    string comments;
+    std::string comments;
     Motorbike* motorbike;
     Customer* customer;
 
     public:
-    Rating(int score=0. string comments="") {
+    Rating(int score=0, std::string comments="") {
         this->score = score;
         this->comments = comments;
     }

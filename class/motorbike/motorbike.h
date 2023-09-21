@@ -38,9 +38,9 @@ private:
     Date* startingDate;
     Date* endingDate;
 
-    std::vector<Review*> listMotorbikeReview;
+    std::vector<Rating*> listMotorbikeReview;
 
-    std::vector<Request*> listMotorbikeRequest;
+    std::vector<Rent*> listMotorbikeRequest;
 
     std::vector<RentedMotorbike*> listRentedMotorbike;
 
@@ -54,9 +54,9 @@ public:
 
     void viewMotorbikeReview();
 
-    void addRequestToMotorbikeRequestList(Request* request);
+    void addRequestToMotorbikeRequestList(Rent* request);
 
-    void addReviewToMotorbikeReviewList(Review* review);
+    void addReviewToMotorbikeReviewList(Rating* review);
 
     ~Motorbike();
 
