@@ -46,7 +46,7 @@ class Rating {
 
     void rateRenter(Customer &c, Motorbike &m, int ratingScore, string comment);
 
-    void rateOwner(Customer &c, Motorbike &m, int score, string comment);
+    void rateOwner(Customer &c, Motorbike &m, int ratingScore, string comment);
 
     ~Rating();
 

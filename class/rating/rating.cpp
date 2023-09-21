@@ -30,7 +30,7 @@ void rateRenter(Customer &c, Motorbike &m, int ratingScore, string comment) {
     m.comment = comment;
 }
 
-void rateOwner(Customer &c, Motorbike &m, int score, string comment) {
+void rateOwner(Customer &c, Motorbike &m, int ratingScore, string comment) {
     m.ratingScore = ratingScore;
     m.comment = comment;
 }

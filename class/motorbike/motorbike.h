@@ -21,7 +21,7 @@
 #include "function.h"  // Include any necessary headers for Member, Review, Request, Date, and other dependencies.
 
 class Motorbike {
-private:
+protected:
     std::string model;
     std::string color;
     float engine;

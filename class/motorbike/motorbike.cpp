@@ -51,6 +51,14 @@ public:
 
     void addReviewToMotorbikeReviewList(Rating* review);
 
+    double getRatingScore() {
+	     return this->ratingScore;
+    }
+
+    void setRatingScore(double ratingScore) {
+	    this->ratingScore = ratingScore;
+    }
+
     ~Motorbike();
 };
 
