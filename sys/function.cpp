@@ -43,5 +43,19 @@ void System::inputAdmintoSys() {
     admin = new Admin(username, pass);
 }
 
+void System::inputMemberToSys() {
+    std::string dataLine;
+    std::ifstream readFile{APP_FILE};
+
+    if (!readFile.is_open()) {
+        std::cerr << "Cannot open the " << APP_FILE << "\n";
+    }
+
+    while (std::getline(readFile, dataLine)) {
+        std::vector<std::string> dataLst;
+        dataLst = splitStr(dataLine, ';');
+    }
+    readFile.close();
+}
 
 

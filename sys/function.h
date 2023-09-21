@@ -17,6 +17,8 @@
 #define FUNCTION_H
 
 #define ADMIN_FILE "class/data/admin.txt"
+#define APP_FILE "class/data/appdata.txt"
+
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -46,6 +48,8 @@ class System {
     void menu();
 
     void inputAdmintoSys();
+
+    void inputMemberToSys();
 };
 
 #endif
