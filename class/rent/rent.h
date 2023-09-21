@@ -16,10 +16,10 @@
 #ifndef RENT_H
 #define RENT_H
 
-#include <iostream>
-#include <fstream>
-#include <sstream>
 #include <vector>
+#include <string>
+#include "motorbike.h"
+#include "customer.h"
 using namespace std;
 
 class Rent {
@@ -31,6 +31,12 @@ class Rent {
 
     public:
     Rent(int date, int month, int year);
+
+    void requestToRent(Motorbike &motorbike, Customer &member);
+
+    void viewRequests(const std::vector<std::string> &requests);
+
+    void acceptRequest(std::vector<Motorbike> &motorbikes, const std::string &name, std::vector<std::string> &requests, int index);
 
     friend class Customer;
     friend class Motorbike;
