@@ -14,124 +14,137 @@
 */
 
 #include <iostream>
-#include <fstream>
-#include <sstream>
-#include <cstring>
-#include <string>
-#include <iomanip>
 #include <vector>
-#include "motorbike.h"
-#include "function.h"
-using namespace std;
+#include "function.h" 
 
 class Motorbike {
-    private:
-        std::string model;
-        std::string color;
-        float engine;
-        std::string location;
-        int transmission;
-        int yearMade;
-        std::string description;
-        Customer* owner;
-        bool available;
-        double ratingScore;
-        Date* startingDate;
-        Date* endingDate;
-        std::vector<Review*> listMotorbikeReview;
-        std::vector<Request*> listMotorbikeRequest;
-        std::vector<RentedMotorbike*> listRentedMotorbike;
+private:
+    std::string model;
+    std::string color;
+    float engine;
+    std::string location;
+    int transmission;
+    int yearMade;
+    std::string description;
+    Customer* owner;
+    bool available;
+    double ratingScore;
+    Date* startingDate;
+    Date* endingDate;
+    std::vector<Review*> listMotorbikeReview;
+    std::vector<Request*> listMotorbikeRequest;
+    std::vector<RentedMotorbike*> listRentedMotorbike;
 
-    public:
-        Motorbike(std::string model, std::string color, float engine,
-                                std::string location, int transmission, int yearMade, std::string description) {
-            this->model = model;
-            this->color = color;
-            this->engine = engine;
-            this->location = location;
-            this->transmission = transmission; 
-            this->yearMade = yearMade; 
-            this->description = description;
-            this->owner = nullptr;
-            this->available = false;
-            this->ratingScore = 0;
-            this->startingDate = nullptr;
-            this->endingDate = nullptr;
-        }
+public:
+    Motorbike(std::string model, std::string color, float engine,
+              std::string location, int transmission, int yearMade, std::string description);
 
-        //Lấy đánh giá trung bình từ members
-        double Motorbike::getRatingScore() {
-            if(this->listMotorbikeReview.empty()){ //bổ sung tên list sau
-                return 0;
-            }
-            double tempScore = 0;
-            for(auto & i : listMotorbikeReview){ //bổ sung tên list sau
-                tempScore += i->ratingScore;
-            }
-            double avgScore = (double ) tempScore / (double ) listMotorbikeReview.size(); //bổ sung tên list sau
-            return avgScore;
-        }
+    double getRatingScore();
 
-        void viewMotorbikeInfo() {
-                if (owner != nullptr) {
-                    std::cout << "\nOwner: " << owner->fullName << "\n";
-                }
-                std::cout << "Location: " << location << "\n";
-                std::cout << "Description: " << description << "\n";
-                std::cout << "Rating score: " << getRatingScore() << "\n";
-                if (available) {
-                    std::cout << "Available from: " << startingDate->convertDatetoString()
-                            << " to " << endingDate->convertDatetoString() << "\n";
-                    std::cout << "Credit per day: " << consumingPointsPerDay << "\n";
-                }
-            }
+    void viewMotorbikeInfo();
 
-        void viewMotorbikeReview() {
-                if (listMotorbikeReview.empty()) {
-                    std::cout << "\nThere is no review of this motorbike\n";
-                }
-                else {
-                    for (auto& review : listMotorbikeReview) {
-                        int tempScore = review->ratingScore;
-                        std::string tempComment = review->comment;
-                        Member* memReview = review->memberReview;
-                        std::cout << "\n-----------------------"
-                                << "\n\nReview by member: " << memReview->fullName
-                                << "\n-----------------------"
-                                << "Score: " << tempScore << "\n"
-                                << "Comment: " << tempComment;
-                    }
-            }
-        }
+    void viewMotorbikeReview();
 
-        void Motorbike::addRequestToMotorbikeRequestList(Request *request) {
-            listMotorbikeRequest.push_back(request);
-        }
+    void addRequestToMotorbikeRequestList(Request* request);
 
-        void Motorbike::addReviewToMotorbikeReviewList(Review *review) {
-            listMotorbikeReview.push_back(review);
-        }
+    void addReviewToMotorbikeReviewList(Review* review);
 
-
-        ~Motorbike() {
-        for (auto& review : listMotorbikeReview) {
-            delete review;
-        }
-
-        for (auto& request : listMotorbikeRequest) {
-            delete request;
-        }
-
-        for (auto& rentedMotorbike : listRentedMotorbike) {
-            delete rentedMotorbike;
-        }
-
-        delete startingDate;
-        delete endingDate;
-
-        // Clear the vectors
-        listMotorbikeReview.clear();
-        listMotorbikeRequest.clear();
-        listRentedMotorbike.clear();
-    }
+    ~Motorbike();
 };
+
+// Constructor implementation
+Motorbike::Motorbike(std::string model, std::string color, float engine,
+                     std::string location, int transmission, int yearMade, std::string description) {
+    this->model = model;
+    this->color = color;
+    this->engine = engine;
+    this->location = location;
+    this->transmission = transmission;
+    this->yearMade = yearMade;
+    this->description = description;
+    this->owner = nullptr;
+    this->available = false;
+    this->ratingScore = 0;
+    this->startingDate = nullptr;
+    this->endingDate = nullptr;
+}
+
+// Function to calculate and return the average rating score
+double Motorbike::getRatingScore() {
+    if (listMotorbikeReview.empty()) {
+        return 0;
+    }
+    double tempScore = 0;
+    for (auto& i : listMotorbikeReview) {
+        tempScore += i->ratingScore;
+    }
+    double avgScore = tempScore / listMotorbikeReview.size();
+    return avgScore;
+}
+
+// Function to display motorbike information
+void Motorbike::viewMotorbikeInfo() {
+    if (owner != nullptr) {
+        std::cout << "\nOwner: " << owner->fullName << "\n";
+    }
+    std::cout << "Location: " << location << "\n";
+    std::cout << "Description: " << description << "\n";
+    std::cout << "Rating score: " << getRatingScore() << "\n";
+    if (available) {
+        std::cout << "Available from: " << startingDate->convertDatetoString()
+                  << " to " << endingDate->convertDatetoString() << "\n";
+        // Assuming 'consumingPointsPerDay' is a member variable or a defined constant
+        std::cout << "Credit per day: " << consumingPointsPerDay << "\n";
+    }
+}
+
+// Function to display motorbike reviews
+void Motorbike::viewMotorbikeReview() {
+    if (listMotorbikeReview.empty()) {
+        std::cout << "\nThere is no review of this motorbike\n";
+    } else {
+        for (auto& review : listMotorbikeReview) {
+            int tempScore = review->ratingScore;
+            std::string tempComment = review->comment;
+            Member* memReview = review->memberReview;
+            std::cout << "\n-----------------------"
+                      << "\n\nReview by member: " << memReview->fullName
+                      << "\n-----------------------"
+                      << "Score: " << tempScore << "\n"
+                      << "Comment: " << tempComment;
+        }
+    }
+}
+
+// Function to add a request to the motorbike's request list
+void Motorbike::addRequestToMotorbikeRequestList(Request* request) {
+    listMotorbikeRequest.push_back(request);
+}
+
+// Function to add a review to the motorbike's review list
+void Motorbike::addReviewToMotorbikeReviewList(Review* review) {
+    listMotorbikeReview.push_back(review);
+}
+
+// Destructor implementation
+Motorbike::~Motorbike() {
+    for (auto& review : listMotorbikeReview) {
+        delete review;
+    }
+
+    for (auto& request : listMotorbikeRequest) {
+        delete request;
+    }
+
+    for (auto& rentedMotorbike : listRentedMotorbike) {
+        delete rentedMotorbike;
+    }
+
+    delete startingDate;
+    delete endingDate;
+
+    // Clear the vectors
+    listMotorbikeReview.clear();
+    listMotorbikeRequest.clear();
+    listRentedMotorbike.clear();
+}
