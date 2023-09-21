@@ -1,12 +1,13 @@
+#include "class/customers/customer.h"
+#include "class/motorbike/motorbike.h"
+#include "class/rating/rating.h"
+#include "class/rent/rent.h"
+#include "class/admin/admin.h"
 #include "function.h"
-#include "customers/customer.h"
-#include "motorbike/motorbike.h"
-#include "rating/rating.h"
-#include "rent/rent.h"
 
 Sys::Sys() {}
 
-void menu() {
+void Sys::menu() {
     int user;
     cout << "EEET2482/COSC2082 - Group Project \n";
     cout << "Motorbike Rental Application \n";
@@ -22,7 +23,23 @@ void menu() {
         case 1:
            menu();
            break;
+        default:
+           cout << "Working in progress. \n";
     }
+}
+
+void Sys::inputAdmintoSys() {
+    string dataLine;
+    ifstream readFile{ADMIN_FILE};
+    if (!readFile.is_open()) {
+        std::cerr << "Cannot open " << ADMIN_FILE << "\n";
+    }
+
+    getline(readFile, dataLine);
+    vector<string> dataLst = splitStr(dataLine, ';');
+    string username = dataLst[0];
+    string pass = dataLst[1];
+    admin = new Admin(username, pass);
 }
 
 

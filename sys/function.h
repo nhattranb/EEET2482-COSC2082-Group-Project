@@ -43,6 +43,8 @@ class Sys {
     Sys();
 
     void menu();
+
+    void inputAdmintoSys();
 };
 
 #endif

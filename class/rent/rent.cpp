@@ -47,7 +47,7 @@ void viewRequests() {
             }
         }
 
-        void acceptRequest(int index) {
+void acceptRequest(int index) {
             if (index < 1 || index > requests.size()) {
                 cout << "Invalid request index." << endl;
             } else {
