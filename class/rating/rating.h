@@ -17,15 +17,18 @@
 #define RATING_H
 
 #include <iostream>
-#include <fstream>
-#include <sstream>
 #include <vector>
+#include "motorbike.h"
+#include "customer.h"
+
 using namespace std;
 
 class Rating {
     private:
     int score;
     string comments;
+    Motorbike* motorbike;
+    Customer* customer;
 
     public:
     Rating(int score=0. string comments="") {
@@ -44,6 +47,8 @@ class Rating {
     void rateRenter(Customer &c, Motorbike &m, int ratingScore, string comment);
 
     void rateOwner(Customer &c, Motorbike &m, int score, string comment);
+
+    ~Rating();
 
     friend class Customer;
     friend class Motorbike;
