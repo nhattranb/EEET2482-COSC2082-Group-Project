@@ -16,6 +16,12 @@
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <regex>
+#include <fstream>
+#include <iomanip>
 #include "class/rent/rent.h"
 #include "class/motorbike/motorbike.h"
 #include "class/customers/customer.h"
