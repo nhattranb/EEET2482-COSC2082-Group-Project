@@ -67,7 +67,7 @@ class Admin {
     	this->phone = phone;
     }
 friend class Motorbike;
-friend class Sys;
+friend class System;
 };
 
 #endif
