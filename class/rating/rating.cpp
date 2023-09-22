@@ -35,6 +35,22 @@ void rateOwner(Customer &c, Motorbike &m, int ratingScore, string comment) {
     m.comment = comment;
 }
 
-void consumingPointsPerDay() {
-  
+void consumingPointsPerDay(Customer &c, Motorbike &m, int days) {
+    // Define the points consumed per day. Adjust this value as needed.
+    double pointsPerDay = 10.0;
+
+    // Calculate the total points to be consumed based on the number of days.
+    double totalPoints = pointsPerDay * static_cast<double>(days);
+
+    // Check if the customer has enough points to cover the rental.
+    if (c.getCreditPoints() >= totalPoints) {
+        // Deduct the points from the customer's balance.
+        c.setCreditPoints(c.getCreditPoints() - totalPoints);
+
+        // You can perform other necessary operations here, such as updating records.
+
+        cout << "Points consumed: " << totalPoints << " for " << days << " days of rental." << endl;
+    } else {
+        cout << "Insufficient points to rent the motorbike for " << days << " days." << endl;
+    }
 }

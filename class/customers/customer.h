@@ -92,6 +92,12 @@ class Customer {
     void setLicense(int license) {
     	this->license = license;
     }
+     double getCreditPoints() {
+        return this->creditPoints;
+    }
+     void setCreditPoints(double points) {
+        this->creditPoints = points;
+    }
 
     friend class Motorbike;
     friend class Rating;
