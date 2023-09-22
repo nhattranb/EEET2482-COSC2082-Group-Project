@@ -66,6 +66,8 @@ class Admin {
     void setPhone(int phone) {
     	this->phone = phone;
     }
+friend class Motorbike;
+friend class Sys;
 };
 
 #endif
