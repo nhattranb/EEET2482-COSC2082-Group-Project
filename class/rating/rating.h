@@ -33,7 +33,7 @@ class Rating {
     Customer* memberReview;
 
     public:
-    Rating(int score=0, std::string comments="", std::string memberReview="") {
+    Rating(int score=0, std::string comments="", std::string memberReview="",Customer* memberReview = nullptr) {
         this->score = score;
         this->comments = comments;
         this->memberReview = memberReview;

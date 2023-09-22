@@ -127,7 +127,7 @@ void Motorbike::viewMotorbikeReview() {
         for (auto& review : listMotorbikeReview) {
             int tempScore = review->score;
             std::string tempComment = review->comments;
-            Customer* memReview = review->memberReview;
+            Customer*memReview = review->memberReview;
             std::cout << "\n-----------------------"
                       << "\n\nReview by member: " << memReview->name
                       << "\n-----------------------"
