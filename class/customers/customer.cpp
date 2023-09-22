@@ -33,10 +33,10 @@ Customer::Customer(string name, string username, string password, int id, int ph
     this->license = license;
 }
 
-string toString() {
-    return "Customer name: " + name + " with username: " + username;
-    return "Password: " + password;
+string Customer::toString() {
+    return "Customer name: " + name + " with username: " + username + "\nPassword: " + password;
 }
+
 
 void showInfo(Customer &cus) {
     cout << cus.toString();
