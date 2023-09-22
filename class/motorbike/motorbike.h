@@ -45,6 +45,8 @@ private:
     std::vector<class Rented*> listRentedMotorbike;  
 
 public:
+    Motorbike() {};
+
     Motorbike(std::string model, std::string color, float engine,
               std::string location, int transmission, int yearMade, std::string description);
 
