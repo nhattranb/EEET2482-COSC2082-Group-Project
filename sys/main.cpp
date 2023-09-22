@@ -21,11 +21,11 @@
 #include <iomanip>
 #include <vector>
 #include "function.h"
-#include "class/customers/customer.h"
-#include "class/motorbike/motorbike.h"
-#include "class/rating/rating.h"
-#include "class/rent/rent.h"
-#include "class/admin/admin.h"
+#include "../class/customers/customer.h"
+#include "../class/motorbike/motorbike.h"
+#include "../class/rating/rating.h"
+#include "../class/rent/rent.h"
+#include "../class/admin/admin.h"
 using namespace std;
 
 int main() {
