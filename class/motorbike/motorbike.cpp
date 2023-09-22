@@ -132,7 +132,7 @@ void Motorbike::viewMotorbikeReview() {
                       << "\n\nReview by member: " << memReview->name
                       << "\n-----------------------"
                       << "Score: " << tempScore << "\n"
-                      << "Comments: " << tempComment;
+                      << "Comment: " << tempComment;
         }
     }
 }
