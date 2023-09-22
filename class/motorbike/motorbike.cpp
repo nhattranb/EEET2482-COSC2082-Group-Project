@@ -18,6 +18,10 @@
 #include "../sys/function.h"
 #include "../motorbike/motorbike.h"
 #include "../rating/rating.h"
+#include "motorbike.h"
+#include "../customers/customer.h"
+
+
 
 class Motorbike: public Customer {
 private:
@@ -57,6 +61,13 @@ public:
 
     void setRatingScore(double ratingScore) {
 	    this->ratingScore = ratingScore;
+    }
+     Customer getOwner() {
+        return owner;
+    }
+
+    void setOwner(Customer owner) {
+        this->owner = owner;
     }
 
     ~Motorbike();
