@@ -9,7 +9,7 @@
   Le Tran Duc Huy (s3891993)
   Compiler used: g++ 8.1.0
   Created  date: 22/08/2023
-  Acknowledgement: Microsoft (2023) - Copilot, September 22nd 2023 version
+  Acknowledgement: ...
 */
 
 #include "function.h"

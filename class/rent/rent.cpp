@@ -10,7 +10,7 @@
   Le Tran Duc Huy (s3891993)
   Compiler used: g++ 8.1.0
   Created  date: 22/08/2023
-  Acknowledgement: BingGPT (2023), September 18th version
+  Acknowledgement: ...
 */
 
 #include <iostream>
