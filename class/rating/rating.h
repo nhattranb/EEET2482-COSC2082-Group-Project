@@ -29,8 +29,7 @@ class Rating {
     std::string comments;
     std::string memberReview;
     Motorbike* motorbike;
-    Customer* customer;
-    Customer* memberReview;
+    Customer customer;
 
     public:
     Rating(int score=0, std::string comments="", std::string memberReview="") {

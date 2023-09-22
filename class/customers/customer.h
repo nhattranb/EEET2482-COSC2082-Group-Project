@@ -37,6 +37,8 @@ class Customer {
     double ownerRating;
 
     public:
+    Customer() {};
+    
     Customer(string name, string username, string password, int id, int phone, int license): name(name), username(username), password(password), id(id), phone(phone),
             license(license) {};
     

@@ -46,10 +46,31 @@ class System {
     System();
 
     void menu();
+    void UI();
+
+    void adminMenu();
+    void adminLogin();
+    void adminRegister();
+    void adminFunction();
+
+    void customerMenu();
+    void customerLogin();
+    void customerRegister();
+    void customerFunction();
+
+    void viewAllMotorbikes();
+    void viewAllRents();
+    void viewAllCustomers();
+    void viewAllRatings();
+    void viewAllFeedbacks();
+    void viewAllReports();
 
     void inputAdmintoSys();
-
     void inputMemberToSys();
+
+    void addMotorbikes();
+    void removeMotorbikes();
+    void updateMotorbikes();
 };
 
 #endif

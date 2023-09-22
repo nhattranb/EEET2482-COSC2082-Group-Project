@@ -30,7 +30,27 @@ using namespace std;
 
 int main() {
     System sys;
+    cout << "Loading... \n";
     sys.menu();
-    sys.inputAdmintoSys();
-    return 0;
+    sys.UI();
+    sys.adminMenu();
+    sys.adminRegister();
+    sys.adminLogin();
+    sys.adminFunction();
+    sys.customerMenu();
+    sys.customerRegister();
+    sys.customerLogin();
+    sys.customerFunction();
+    cout << "Motorbike Database \n";
+    sys.addMotorbikes();
+    sys.removeMotorbikes();
+    sys.updateMotorbikes();
+    sys.viewAllMotorbikes();
+    cout << "Customer Pantry \n";
+    sys.viewAllCustomers();
+    sys.viewAllFeedbacks();
+    sys.viewAllRatings();
+    sys.viewAllRents();
+    sys.viewAllReports();
+    cout << "Finish the application. \n";
 }
