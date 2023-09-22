@@ -32,7 +32,7 @@ void rateRenter(Customer &c, Motorbike &m, int ratingScore, string comment) {
 
 void rateOwner(Customer &c, Motorbike &m, int ratingScore, string comment) {
     m.ratingScore = ratingScore;
-    m.comment = comment;
+    m.comments = comment;
 }
 
 void consumingPointsPerDay(Customer &c, Motorbike &m, int days) {
