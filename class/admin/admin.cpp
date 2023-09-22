@@ -23,9 +23,9 @@
 #include "admin.h"
 using namespace std;
 
-Admin(std::string name="", std::string username="", std::string password="",int phone=0 ): name(name), username(username), password(password),phone(phone) {};
+Admin::Admin(std::string name="", std::string username="", std::string password="",int phone=0 ): name(name), username(username), password(password),phone(phone) {};
 
-string toString() {
+string Admin::toString() {
     return "Admin name: " + name + " with username: " + username;
     return "Password: " + password;
 }

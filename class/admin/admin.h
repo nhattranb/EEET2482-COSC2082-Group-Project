@@ -30,7 +30,7 @@ class Admin {
   
     public:
     Admin(std::string name="", std::string username="", std::string password="",int phone=0 ): name(name), username(username), password(password),phone(phone) {};
-    
+    string toString();
     void showInfo();
 
     void writetofile(std::string username, std::string password);
