@@ -16,62 +16,10 @@
 #include <iostream>
 #include <vector>
 #include "../sys/function.h"
-#include "../motorbike/motorbike.h"
 #include "../rating/rating.h"
 #include "motorbike.h"
 #include "../customers/customer.h"
-
-
-
-class Motorbike: public Customer {
-private:
-    std::string model;
-    std::string color;
-    float engine;
-    std::string location;
-    int transmission;
-    int yearMade;
-    std::string description;
-    Customer* owner;
-    bool available;
-    double ratingScore;
-    Rent* startingDate;
-    Rent* endingDate;
-    std::vector<Rating*> listMotorbikeReview;
-    std::vector<Rent*> listMotorbikeRequest;
-    std::vector<Rented*> listRentedMotorbike;
-
-public:
-    Motorbike(std::string model, std::string color, float engine,
-              std::string location, int transmission, int yearMade, std::string description);
-
-    double getRatingScore();
-
-    void viewMotorbikeInfo();
-
-    void viewMotorbikeReview();
-
-    void addRequestToMotorbikeRequestList(Rent* request);
-
-    void addReviewToMotorbikeReviewList(Rating* review);
-
-    double getRatingScore() {
-	     return this->ratingScore;
-    }
-
-    void setRatingScore(double ratingScore) {
-	    this->ratingScore = ratingScore;
-    }
-     Customer getOwner() {
-        return owner;
-    }
-
-    void setOwner(Customer owner) {
-        this->owner = owner;
-    }
-
-    ~Motorbike();
-};
+#include "../motorbike/rented.h"  // Include the header for Rented class.
 
 // Constructor implementation
 Motorbike::Motorbike(std::string model, std::string color, float engine,
@@ -90,8 +38,23 @@ Motorbike::Motorbike(std::string model, std::string color, float engine,
     this->endingDate = nullptr;
 }
 
+// Setter for the motorbike name
+void Motorbike::setName(const std::string& newName) {
+    this->model = newName;
+}
+
+// Function to set the availability status of the motorbike
+void Motorbike::setAvailable(bool isAvailable) {
+    this->available = isAvailable;
+}
+
+// Getter for the motorbike name
+std::string Motorbike::getName() const {
+    return this->model;
+}
+
 // Function to calculate and return the average rating score
-double Motorbike::getRatingScore() {
+double Motorbike::getRatingScore() const {
     if (listMotorbikeReview.empty()) {
         return 0;
     }
@@ -104,14 +67,14 @@ double Motorbike::getRatingScore() {
 }
 
 // Function to display motorbike information
-void Motorbike::viewMotorbikeInfo() {
+void Motorbike::viewMotorbikeInfo() const {
     if (owner != nullptr) {
         std::cout << "\nOwner: " << owner->name << "\n";
     }
     std::cout << "Location: " << location << "\n";
     std::cout << "Description: " << description << "\n";
     std::cout << "Rating score: " << getRatingScore() << "\n";
-    while (available != false) {
+    if (available) {
         std::cout << "Available from: " << startingDate->convertDatetoString()
                   << " to " << endingDate->convertDatetoString() << "\n";
         // Assuming 'consumingPointsPerDay' is a member variable or a defined constant
@@ -120,19 +83,19 @@ void Motorbike::viewMotorbikeInfo() {
 }
 
 // Function to display motorbike reviews
-void Motorbike::viewMotorbikeReview() {
+void Motorbike::viewMotorbikeReview() const {
     if (listMotorbikeReview.empty()) {
         std::cout << "\nThere is no review of this motorbike\n";
     } else {
         for (auto& review : listMotorbikeReview) {
             int tempScore = review->score;
             std::string tempComment = review->comments;
-            Customer*memReview = review->memberReview;
+            Customer* memReview = review->memberReview;
             std::cout << "\n-----------------------"
                       << "\n\nReview by member: " << memReview->name
                       << "\n-----------------------"
                       << "Score: " << tempScore << "\n"
-                      << "Comment: " << tempComment;
+                      << "Comments: " << tempComment;
         }
     }
 }
