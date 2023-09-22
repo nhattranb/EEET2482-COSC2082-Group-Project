@@ -18,10 +18,11 @@
 
 #include <string>
 #include <vector>
-#include "rented.h"  // Include any necessary headers for Member, Review, Request, Date, and other dependencies.
+#include "../customers/customer.h"
+#include "motorbike.h"  // Include any necessary headers for Member, Review, Request, Date, and other dependencies.
 
-class Motorbike: public Rented {
-private:
+class Rented: public Customer {
+protected:
     std::string model;
     std::string color;
     float engine;
@@ -34,42 +35,21 @@ private:
 
     bool available;
     double ratingScore;
-
     Rent* startingDate;
     Rent* endingDate;
 
-    std::vector<Rating*> listMotorbikeReview;
-
-    std::vector<Rent*> listMotorbikeRequest;
-
-    std::vector<Rented*> listRentedMotorbike;
-
 public:
-    Motorbike(std::string model, std::string color, float engine,
+    Rented(std::string model, std::string color, float engine,
               std::string location, int transmission, int yearMade, std::string description);
 
-    bool getAvailable() {
-	    return this->available;
-    }
-
-    void setAvailable(bool available) {
-	    this->available = available;
-    }
-    
     double getRatingScore();
 
     void viewMotorbikeInfo();
 
-    void viewMotorbikeReview();
+    ~Rented();
 
-    void addRequestToMotorbikeRequestList(Rent* request);
-
-    void addReviewToMotorbikeReviewList(Rating* review);
-
-    ~Motorbike();
-
-    friend class Member;
-    friend class Rented;
+    friend class Customer;
+    friend class Motorbike;
     friend class System;
 };
 

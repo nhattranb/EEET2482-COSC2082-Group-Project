@@ -21,8 +21,10 @@
 using namespace std;
 
 class Customer {
-    private:
+    public:
     std::string name;
+
+    private:
     std::string username;
     std::string password;
     double id;
@@ -35,9 +37,10 @@ class Customer {
     double ownerRating;
 
     public:
-    Customer(std::string name="", std::string username="", std::string password="", double id=0, int phone=0, int license=0,
-            std::string idType="", std:string ExpiryDate=""): Name(name), UserName(username), password(password), id(id), phone(phone).
+    Customer(string name, string username, string password, int id, int phone, int license): name(name), username(username), password(password), id(id), phone(phone),
             license(license) {};
+    
+    string toString();
     
     void showInfo();
 
@@ -92,7 +95,6 @@ class Customer {
 
     friend class Motorbike;
     friend class Rating;
-
 };
 
 #endif

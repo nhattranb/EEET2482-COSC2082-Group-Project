@@ -14,6 +14,7 @@
 */
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include "../motorbike/motorbike.h"
 #include "../customers/customer.h"
@@ -21,10 +22,10 @@
 using namespace std;
 
 void requestToRent(Motorbike &motorbike, Customer &member) {
-    if (!motorbike.isAvailable) {
+    if (!motorbike.available) {
         cout << "Sorry, this motorbike is already rented. Please try again" << endl;
     } else {
-        motorbike.isAvailable = false;
+        motorbike.available = false;
         motorbike.renterName = member.name;
         member.requests.push_back(motorbike.name);
         cout << "Your request to rent " << motorbike.name << " has been sent." << endl;
@@ -47,15 +48,23 @@ void acceptRequest(vector<Motorbike> &motorbikes, const string &name, vector<str
         cout << "Invalid request index." << endl;
     } else {
         for (int i = 0; i < motorbikes.size(); i++) {
-            if (motorbikes[i].name == requests[index - 1]) {
-                motorbikes[i].isAvailable = false;
-                motorbikes[i].renterName = name;
+            if (motorbikes[i].model == requests[index - 1]) {
+                motorbikes[i].available = false;
+                motorbikes[i].name = name;
             } else {
-                motorbikes[i].isAvailable = true;
-                motorbikes[i].renterName = "";
+                motorbikes[i].available = true;
+                motorbikes[i].name = "";
             }
         }
         cout << "You have accepted the request to rent " << requests[index - 1] << "." << endl;
         requests.clear();
     }
+}
+
+std::string convertDateToString() {
+  auto t = std::time(nullptr);
+  auto tm = *std::localtime(&t);
+  std::ostringstream oss;
+  oss << std::put_time(&tm, Rent);
+  return oss.str();
 }

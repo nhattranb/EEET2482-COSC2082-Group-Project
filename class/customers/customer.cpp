@@ -24,7 +24,7 @@
 #include "points.h"
 using namespace std;
 
-Customer(string name, string username, string password, int id, int phone, int license) {
+Customer::Customer(string name, string username, string password, int id, int phone, int license) {
     this->name = name;
     this->username = username;
     this->password = password;

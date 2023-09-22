@@ -43,7 +43,7 @@ void System::inputAdmintoSys() {
     admin = new Admin(username, password);
 }
 
-void System::inputMemberToSys() {
+void System::inputDataToSys() {
     std::string dataLine;
     std::ifstream readFile{APP_FILE};
 

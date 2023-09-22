@@ -23,12 +23,7 @@
 #include "admin.h"
 using namespace std;
 
-Admin(string name, string username, string password, int phone) {
-    this->name = name;
-    this->username = username;
-    this->password = password;
-    this->phone = phone;
-}
+Admin(std::string name="", std::string username="", std::string password="",int phone=0 ): name(name), username(username), password(password),phone(phone) {};
 
 string toString() {
     return "Admin name: " + name + " with username: " + username;

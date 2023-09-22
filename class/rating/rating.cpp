@@ -34,3 +34,7 @@ void rateOwner(Customer &c, Motorbike &m, int ratingScore, string comment) {
     m.ratingScore = ratingScore;
     m.comment = comment;
 }
+
+void consumingPointsPerDay() {
+  
+}

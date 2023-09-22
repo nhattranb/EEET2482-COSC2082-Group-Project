@@ -22,7 +22,7 @@
 #include "customer.h"
 using namespace std;
 
-class Rent {
+class Rent: public Motorbike {
     private:
     int date;
     int month;
@@ -37,6 +37,8 @@ class Rent {
     void viewRequests(const std::vector<std::string> &requests);
 
     void acceptRequest(std::vector<Motorbike> &motorbikes, const std::string &name, std::vector<std::string> &requests, int index);
+
+    std::string convertDateToString();
 
     friend class Customer;
     friend class Motorbike;

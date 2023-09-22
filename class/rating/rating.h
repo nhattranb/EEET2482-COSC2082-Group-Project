@@ -27,13 +27,15 @@ class Rating {
     private:
     int score;
     std::string comments;
+    std::string memberReview;
     Motorbike* motorbike;
     Customer* customer;
 
     public:
-    Rating(int score=0, std::string comments="") {
+    Rating(int score=0, std::string comments="", std::string memberReview="") {
         this->score = score;
         this->comments = comments;
+        this->memberReview = memberReview;
     }
 
     string toString() {
@@ -47,6 +49,8 @@ class Rating {
     void rateRenter(Customer &c, Motorbike &m, int ratingScore, string comment);
 
     void rateOwner(Customer &c, Motorbike &m, int ratingScore, string comment);
+
+    void consumingPointsPerDay();
 
     ~Rating();
 

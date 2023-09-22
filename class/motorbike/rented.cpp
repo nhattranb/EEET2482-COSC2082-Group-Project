@@ -18,8 +18,9 @@
 #include "../sys/function.h"
 #include "../motorbike/motorbike.h"
 #include "../rating/rating.h"
+#include "rented.h"
 
-class Motorbike: public Customer {
+class Rented: public Customer, public Motorbike {
 private:
     std::string model;
     std::string color;
@@ -33,12 +34,9 @@ private:
     double ratingScore;
     Rent* startingDate;
     Rent* endingDate;
-    std::vector<Rating*> listMotorbikeReview;
-    std::vector<Rent*> listMotorbikeRequest;
-    std::vector<Rented*> listRentedMotorbike;
 
 public:
-    Motorbike(std::string model, std::string color, float engine,
+    Rented(std::string model, std::string color, float engine,
               std::string location, int transmission, int yearMade, std::string description);
 
     double getRatingScore();
@@ -59,11 +57,11 @@ public:
 	    this->ratingScore = ratingScore;
     }
 
-    ~Motorbike();
+    ~Rented();
 };
 
 // Constructor implementation
-Motorbike::Motorbike(std::string model, std::string color, float engine,
+Rented::Rented(std::string model, std::string color, float engine,
                      std::string location, int transmission, int yearMade, std::string description) {
     this->model = model;
     this->color = color;
@@ -79,21 +77,8 @@ Motorbike::Motorbike(std::string model, std::string color, float engine,
     this->endingDate = nullptr;
 }
 
-// Function to calculate and return the average rating score
-double Motorbike::getRatingScore() {
-    if (listMotorbikeReview.empty()) {
-        return 0;
-    }
-    double tempScore = 0;
-    for (auto& i : listMotorbikeReview) {
-        tempScore += i->score;
-    }
-    double avgScore = tempScore / listMotorbikeReview.size();
-    return avgScore;
-}
-
 // Function to display motorbike information
-void Motorbike::viewMotorbikeInfo() {
+void Rented::viewMotorbikeInfo() {
     if (owner != nullptr) {
         std::cout << "\nOwner: " << owner->name << "\n";
     }
@@ -108,36 +93,8 @@ void Motorbike::viewMotorbikeInfo() {
     }
 }
 
-// Function to display motorbike reviews
-void Motorbike::viewMotorbikeReview() {
-    if (listMotorbikeReview.empty()) {
-        std::cout << "\nThere is no review of this motorbike\n";
-    } else {
-        for (auto& review : listMotorbikeReview) {
-            int tempScore = review->score;
-            std::string tempComment = review->comments;
-            Customer* memReview = review->memberReview;
-            std::cout << "\n-----------------------"
-                      << "\n\nReview by member: " << memReview->name
-                      << "\n-----------------------"
-                      << "Score: " << tempScore << "\n"
-                      << "Comment: " << tempComment;
-        }
-    }
-}
-
-// Function to add a request to the motorbike's request list
-void Motorbike::addRequestToMotorbikeRequestList(Rent* request) {
-    listMotorbikeRequest.push_back(request);
-}
-
-// Function to add a review to the motorbike's review list
-void Motorbike::addReviewToMotorbikeReviewList(Rating* review) {
-    listMotorbikeReview.push_back(review);
-}
-
 // Destructor implementation
-Motorbike::~Motorbike() {
+Rented::~Rented() {
     for (auto& review : listMotorbikeReview) {
         delete review;
     }
