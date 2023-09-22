@@ -13,8 +13,8 @@
   Acknowledgement: List the resources that you use to complete this assessment (write 'None' if you don't use any).
 */
 
-#ifndef MOTORBIKE_H
-#define MOTORBIKE_H
+#ifndef RENTED_H
+#define RENTED_H
 
 #include <string>
 #include <vector>
