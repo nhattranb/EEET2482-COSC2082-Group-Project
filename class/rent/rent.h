@@ -18,19 +18,20 @@
 
 #include <vector>
 #include <string>
-#include "motorbike.h"
+#include "motorbike.h" 
 #include "customer.h"
-using namespace std;
 
-class Rent: public Motorbike {
-    private:
+class Rent {
+private:
     int date;
     int month;
     int year;
     bool requests;
 
-    public:
+public:
     Rent(int date, int month, int year);
+
+    std::string convertDatetoString() const;
 
     void requestToRent(Motorbike &motorbike, Customer &member);
 
@@ -38,7 +39,6 @@ class Rent: public Motorbike {
 
     void acceptRequest(std::vector<Motorbike> &motorbikes, const std::string &name, std::vector<std::string> &requests, int index);
 
-    std::string convertDateToString();
 
     friend class Customer;
     friend class Motorbike;
