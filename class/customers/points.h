@@ -25,13 +25,13 @@
 #include <vector>
 #include "customer.h"
 using namespace std;
-
-class Point: public Customer {
+class Customer;
+class Point {
     private:
     int point;
 
     public:
-    Point(int point): Customer() {
+    Point(int point) {
         this->point = point;
     }
     
