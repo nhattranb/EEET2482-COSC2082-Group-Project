@@ -28,12 +28,15 @@ Motorbike::Motorbike(std::string model, std::string color, float engine,
     this->color = color;
     this->engine = engine;
     this->location = location;
+    this->comments = comments;
     this->transmission = transmission;
     this->yearMade = yearMade;
+    this->renterName = renterName;
     this->description = description;
     this->owner = nullptr;
     this->available = false;
     this->ratingScore = 0;
+    this->consumingPointsPerDay = 10;
     this->startingDate = nullptr;
     this->endingDate = nullptr;
 }
@@ -48,9 +51,31 @@ void Motorbike::setAvailable(bool isAvailable) {
     this->available = isAvailable;
 }
 
+bool Motorbike::getAvailable() {
+	return this->available;
+}
+
 // Getter for the motorbike name
 std::string Motorbike::getName() const {
     return this->model;
+}
+
+std::string getRenterName() {
+	return this->renterName;
+}
+
+void setRenterName(std::string renterName) {
+	this->renterName = renterName;
+}
+
+// Getter for motorbike comments
+std::string Motorbike::getComments() {
+	return this->comments;
+}
+
+// setter ...
+void Motorbike::setComments(std::string comments) {
+	this->comments = comments;
 }
 
 // Function to calculate and return the average rating score
@@ -64,6 +89,10 @@ double Motorbike::getRatingScore() const {
     }
     double avgScore = tempScore / listMotorbikeReview.size();
     return avgScore;
+}
+
+void Motorbike::setRatingScore(double avgScore) {
+    avgScore = ratingScore;
 }
 
 // Function to display motorbike information
@@ -106,7 +135,8 @@ void Motorbike::addRequestToMotorbikeRequestList(Rent* request) {
 }
 
 // Function to add a review to the motorbike's review list
-void Motorbike::addReviewToMotorbikeReviewList(Rating* review) {
+void Motorbike::addReviewToMotorbikeReviewList(int score, std::string comments, Customer* memberReview) {
+    Rating* review = new Rating(score, comments, memberReview);
     listMotorbikeReview.push_back(review);
 }
 

@@ -25,14 +25,20 @@
 #include "../motorbike/motorbike.h"
 using namespace std;
 
+Rating(int score=0, std::string comments="", std::string memberReview="") {
+        this->score = score;
+        this->comments = comments;
+        this->memberReview = memberReview;
+}
+
 void rateRenter(Customer &c, Motorbike &m, int ratingScore, string comments) {
-    m.ratingScore = ratingScore;
-    m.comments = comments;
+    m.setRatingScore(ratingScore);
+    m.setComments(comments);
 }
 
 void rateOwner(Customer &c, Motorbike &m, int ratingScore, string comments) {
-    m.ratingScore = ratingScore;
-    m.comments = comments;
+    m.setRatingScore(ratingScore);
+    m.setComments(comments);
 }
 
 void consumingPointsPerDay(Customer &c, Motorbike &m, int days) {

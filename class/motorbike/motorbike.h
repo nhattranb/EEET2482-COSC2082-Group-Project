@@ -29,12 +29,15 @@ private:
     std::string color;
     float engine;
     std::string location;
+    std::string comments;
     int transmission;
     int yearMade;
     std::string description;
+    std::string renterName;
     Customer* owner;
     bool available;
     double ratingScore;
+    double consumingPointsPerDay;
     Rent* startingDate;
     Rent* endingDate;
     std::vector<Rating*> listMotorbikeReview;
@@ -48,12 +51,18 @@ public:
     // New member functions
     void setName(const std::string& newName);
     std::string getName() const;
+    std::string getComments();
+    void setComments(std::string comments);
+    bool getAvailable();
     void setAvailable(bool available);
+    std::string getRenterName();
+    void setRenterName(std::string renterName);
     double getRatingScore() const;
+    void setRatingScore(double avgScore);
     void viewMotorbikeInfo() const;
     void viewMotorbikeReview() const;
     void addRequestToMotorbikeRequestList(Rent* request);
-    void addReviewToMotorbikeReviewList(Rating* review);
+    void addReviewToMotorbikeReviewList(int score, std::string comments, Customer* memberReview);
 
     ~Motorbike();
 
