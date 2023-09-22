@@ -13,8 +13,8 @@
   Acknowledgement: List the resources that you use to complete this assessment (write 'None' if you don't use any).
 */
 
-#ifndef CUSTOMER_H
-#define CUSTOMER_H
+#ifndef ADMIN_H
+#define ADMIN_H
 
 #include <iostream>
 #include <string>
@@ -66,6 +66,8 @@ class Admin {
     void setPhone(int phone) {
     	this->phone = phone;
     }
+friend class Motorbike;
+friend class System;
 };
 
 #endif
