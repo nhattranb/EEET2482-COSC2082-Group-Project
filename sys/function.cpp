@@ -337,25 +337,24 @@ void System::saveDataToSys() {
 }
 
 void System::addMotorbikes() {
-    string name, type, color, licensePlate, manufacturer;
-    int year, seat, price;
-    cout << "Please enter the name of the motorbike: \n";
-    cin >> name;
-    cout << "Please enter the type: \n";
-    cin >> type;
+    string model, engine, color, location, transmission, description;
+    int yearMade;
+    float engine;
+    cout << "Please enter the model of the motorbike: \n";
+    cin >> model;
     cout << "Please enter the color: \n";
     cin >> color;
-    cout << "Please enter the license plate: \n";
-    cin >> licensePlate;
-    cout << "Please enter the manufacturer: \n";
-    cin >> manufacturer;
+    cout << "Please enter the engine: \n";
+    cin >> engine;
+    cout << "Please enter the location: \n";
+    cin >> location;
+    cout << "Please enter the trans: \n";
+    cin >> transmission;
     cout << "Please enter the year: \n";
-    cin >> year;
-    cout << "Please enter the seat (no more than 2): \n";
-    cin >> seat;
-    cout << "Please enter the price: \n";
-    cin >> price;
-    Motorbike* motorbike = new Motorbike(name, type, color, licensePlate, manufacturer, year, seat, price);
+    cin >> yearMade;
+    cout << "Please enter the description: \n";
+    cin >> description;
+    Motorbike* motorbike = new Motorbike(model, color, engine, location, transmission, yearMade, description);
     motorbikes.push_back(motorbike);
     cout << "Add your motorbike successfully! \n";
     adminFunction();
@@ -377,34 +376,34 @@ void System::removeMotorbikes() {
 }
 
 void System::updateMotorbikes() {
-    string name, type, color, licensePlate, manufacturer;
-    int year, seat, price;
+    string stuff, model, engine, color, location, transmission, description;
+    int yearMade;
+    float engine;
     cout << "Enter what you want to update: \n";
-    cin >> name;
+    cin >> stuff;
     for (int i = 0; i < motorbikes.size(); i++) {
-        if (motorbikes[i]->getName() == name) {
-            cout << "Name Change? \n";
-            cin >> name;
-            cout << "Type Change? \n";
-            cin >> type;
-            cout << "Color Change? \n";
+        if (motorbikes[i]->getName() == stuff) {
+            cout << "Please reenter the model of the motorbike: \n";
+            cin >> model;
+            cout << "Please reenter the color: \n";
             cin >> color;
-            cout << "License Plate Change? (will check with the government) \n";
-            cin >> licensePlate;
-            cout << "Producer Change?: \n";
-            cin >> manufacturer;
-            cout << "Year Change? \n";
-            cin >> year;
-            cout << "Seating Change? (no more than 2): \n";
-            cin >> seat;
-            cout << "More Expensive or Cheaper? \n";
-            cin >> price;
-            Motorbike* motorbike = new Motorbike(name, type, color, licensePlate, manufacturer, year, seat, price);
+            cout << "Please reenter the engine: \n";
+            cin >> engine;
+            cout << "Please reenter the location: \n";
+            cin >> location;
+            cout << "Please reenter the trans: \n";
+            cin >> transmission;
+            cout << "Please reenter the year: \n";
+            cin >> yearMade;
+            cout << "Please reenter the description: \n";
+            cin >> description;
+            Motorbike* motorbike = new Motorbike(model, color, engine, location, transmission, yearMade, description);
             motorbikes[i] = motorbike;
             cout << "Update successfully! \n";
             adminFunction();
+        } else {
+             cout << "Not found. No changes. \n";
+             adminFunction();
         }
     }
-    cout << "Not found. No changes. \n";
-    adminFunction();
 }
