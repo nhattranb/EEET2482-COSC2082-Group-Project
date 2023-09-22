@@ -18,8 +18,8 @@
 
 #include <vector>
 #include <string>
-#include "motorbike.h" 
-#include "customer.h"
+#include "../customers/customer.h"
+#include "../motorbike/motorbike.h"
 
 class Rent {
 private:
