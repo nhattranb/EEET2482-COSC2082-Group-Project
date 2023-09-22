@@ -47,9 +47,9 @@ class Rating {
         cout << toString();
     }
 
-    void rateRenter(Customer &c, Motorbike &m, int ratingScore, string comment);
+    void rateRenter(Customer &c, Motorbike &m, int ratingScore, string comments);
 
-    void rateOwner(Customer &c, Motorbike &m, int ratingScore, string comment);
+    void rateOwner(Customer &c, Motorbike &m, int ratingScore, string comments);
 
     void consumingPointsPerDay();
 
