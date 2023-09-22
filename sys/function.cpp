@@ -11,11 +11,7 @@
   Created  date: 22/08/2023
   Acknowledgement: Microsoft (2023), Copilot AI September 22nd version */
 
-#include "../class/customers/customer.h"
-#include "../class/motorbike/motorbike.h"
-#include "../class/rating/rating.h"
-#include "../class/rent/rent.h"
-#include "../class/admin/admin.h"
+
 #include "function.h"
 #include <bits/stdc++.h>
 

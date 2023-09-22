@@ -43,8 +43,17 @@ class Admin;
 
 class System {
     public:
-    System();
+    vector<Admin> adminList;
+    vector<Customer> customerList;
+    vector<Motorbike> motorbikeList;
+    vector<Rent> rentList;
+    vector<Rating> ratingList;
+    Admin admin;
+    Customer cus;
+    Motorbike motorbike;
 
+    System();
+    
     void menu();
     void UI();
 
