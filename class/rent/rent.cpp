@@ -19,41 +19,51 @@
 #include "../motorbike/motorbike.h"
 #include "../customers/customer.h"
 #include <algorithm>
-using namespace std;
+#include <ctime>
+#include <sstream>
+#include "rent.h"
 
-void requestToRent(Motorbike &motorbike, Customer &member) {
-    if (!motorbike.available) {
-        cout << "Sorry, this motorbike is already rented. Please try again" << endl;
+// Constructor implementation
+Rent::Rent(int date, int month, int year) {
+    this->date = date;
+    this->month = month;
+    this->year = year;
+    this->requests = false;
+}
+
+void Rent::requestToRent(Motorbike &motorbike, Customer &member) {
+    if (!motorbike.getAvailable()) {
+        std::cout << "Sorry, this motorbike is already rented. Please try again" << std::endl;
     } else {
-        motorbike.available = false;
-        motorbike.renterName = member.name;
-        member.requests.push_back(motorbike.name);
-        cout << "Your request to rent " << motorbike.name << " has been sent." << endl;
+        motorbike.setAvailable(false);
+        motorbike.setRenterName(member.getName()); 
+        member.addRequest(motorbike.getName()); 
+        std::cout << "Your request to rent " << motorbike.getName() << " has been sent." << std::endl;
     }
 }
 
-void viewRequests(const vector<string> &requests) {
+void Rent::viewRequests(const std::vector<std::string> &requests) {
     if (requests.empty()) {
-        cout << "Sorry but you have NO requests at the moment." << endl;
+        std::cout << "Sorry but you have NO requests at the moment." << std::endl;
     } else {
-        cout << "Here are your requests:" << endl;
+        std::cout << "Here are your requests:" << std::endl;
         for (int i = 0; i < requests.size(); i++) {
-            cout << i + 1 << ". " << requests[i] << endl;
+            std::cout << i + 1 << ". " << requests[i] << std::endl;
         }
     }
 }
 
-void acceptRequest(vector<Motorbike> &motorbikes, const string &name, vector<string> &requests, int index) {
+void Rent::acceptRequest(std::vector<Motorbike> &motorbikes, const std::string &name, std::vector<std::string> &requests, int index) {
     if (index < 1 || index > requests.size()) {
         cout << "Invalid request index." << endl;
     } else {
         for (int i = 0; i < motorbikes.size(); i++) {
-            if (motorbikes[i].model == requests[index - 1]) {
-                motorbikes[i].available = false;
-                motorbikes[i].name = name;
+            if (motorbikes[i].getName() == requests[index - 1]) {
+                motorbikes[i].setAvailable(false);
+                motorbikes[i].setName(name);
             } else {
-                motorbikes[i].available = true;
-                motorbikes[i].name = "";
+                motorbikes[i].setAvailable(true);
+                motorbikes[i].setName("");
             }
         }
         cout << "You have accepted the request to rent " << requests[index - 1] << "." << endl;
@@ -61,10 +71,14 @@ void acceptRequest(vector<Motorbike> &motorbikes, const string &name, vector<str
     }
 }
 
-std::string convertDateToString() {
-  auto t = std::time(nullptr);
-  auto tm = *std::localtime(&t);
-  std::ostringstream oss;
-  oss << std::put_time(&tm, Rent);
-  return oss.str();
+std::string Rent::convertDatetoString() const {
+    // Implement the conversion logic here
+    // You can use this function to format the date as needed
+    std::ostringstream oss;
+    
+    // Assuming you want the date in the format "MM/DD/YYYY"
+    oss << std::setfill('0') << std::setw(2) << month << "/"
+        << std::setw(2) << date << "/" << year;
+
+    return oss.str();
 }
